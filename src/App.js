@@ -1,7 +1,7 @@
 import ExpenseItem from './components/ExpenseItem';
 
 function App() {
-
+    // These are expenses from the carwash
     const expenses = [
         {
             id: 'e1',
