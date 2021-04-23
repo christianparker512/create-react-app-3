@@ -27,6 +27,12 @@ function App() {
             amount: 27.32,
             date: new Date (2021, 4, 4),
         },
+        {
+            id: 'e5',
+            title: 'windex',
+            amount: 29.32,
+            date: new Date (2021, 4, 19),
+        },
     ]
   return (
     <div>
