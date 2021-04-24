@@ -29,10 +29,16 @@ function App() {
         },
         {
             id: 'e5',
-            title: 'windex',
+            title: 'soap',
             amount: 29.32,
             date: new Date (2021, 4, 19),
         },
+        {
+            id: 'e6',
+            title: 'leather polish',
+            amount: 9.32,
+            date: new Date (2021, 4, 23),
+        }
     ]
   return (
     <div>
