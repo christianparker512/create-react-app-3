@@ -38,6 +38,12 @@ function App() {
             title: 'leather polish',
             amount: 9.32,
             date: new Date (2021, 4, 23),
+        },
+        {
+            id: 'e7',
+            title: 'new car smell',
+            amount: 15.00,
+            date: new Date (2021, 4, 24)
         }
     ]
   return (
