@@ -1,17 +1,99 @@
-import ExpenseDate from './ExpenseDate';
-import Card from './Card';
-import './ExpenseItem.css';
+const useState = React.useState
 
-function ExpenseItem(props) {
+const pets = [
+    { name: "Meowsalot", species: "cat", age: "5", id: 123456789 },
+    { name: "Barksalot", species: "dog", age: "3", id: 987654321 },
+    { name: "Fluffy", species: "rabbit", age: "2", id: 123123123 },
+    { name: "Purrsloud", species: "cat", age: "1", id: 456456456 },
+    { name: "Paws", species: "dog", age: "6", id: 789789789 }
+]
+
+function OurApp() {
     return (
-        <Card className='expense-item'>
-            <ExpenseDate date={props.date} />
-            <div className='expense-item__description'>
-                <h2>{props.title}</h2>
-                <div className='expense-item__price'>${props.amount}</div>
-            </div>
-        </Card>
-    );
+        <>
+            <OurHeader />
+            <LikeArea />
+            <TimeArea />
+            <ul>
+                {pets.map(pet => <Pet name={pet.name} species={pet.species} age={pet.age} key={pet.id}/>)}
+            </ul>
+            <Copyright />
+
+        </>
+    )
+
 }
 
-export default ExpenseItem;
+function OurHeader(){
+    return <h1 className="special">Our Header</h1>
+}
+
+function TimeArea() {
+    const [theTime, setTheTime] = useState(new Date().toLocaleString())
+    setTimeout(function(){
+        setTheTime(new Date().toLocaleString())
+    },1000)
+    return <p>The current time is {theTime}</p>
+}
+
+
+function LikeArea() {
+    const [likeCount, setLikeCount] = useState(0)
+
+    function increaseLikeHandler() {
+        setLikeCount(function(prev) {
+            return prev + 1
+        })
+    }
+
+    function decreaseLikeHandler() {
+        setLikeCount(prev => {
+            if (prev > 0) {
+                return prev - 1
+            }
+            return 0
+        })
+    }
+
+    return (
+        <>
+            <button onClick={increaseLikeHandler}>Increase likes</button>
+            <button onClick={decreaseLikeHandler}>Decrease likes</button>
+            <h2>This page has been liked {likeCount} times.</h2>
+        </>
+    )
+}
+
+function LikeArea(){
+    const [likeCount, setLikeCount] = useState(0)
+    function increaseLikeHandler(){
+        setLikeCount(function(prev){
+            return prev + 1
+        })
+    }
+
+    function decreaseLikeHandler(){
+        setLikeCount(prev => {
+            if (prev > 0){
+                return prev - 1
+            }
+            return 0
+        })
+    }
+    return (
+        <>
+            <button onClick={increaseLikeHandler()}>Increase likes</button>
+            <button>Decrease likes</button>
+            <h2>This page as been liked {likeCount} times </h2>
+        </>
+    )
+}
+function Pet(props){
+    return <li>{props.name} is a {props.species} and is {props.age} years old</li>
+}
+function Copyright (){
+    return  <small>Copyright footer text</small>
+}
+// setInterval(function() {
+ReactDOM.render(<OurApp />, document.querySelector("#app"))
+// }, 1000)
